@@ -1,0 +1,134 @@
+@import '../../variables.scss';
+
+.container-list {
+    background-color: $background-grey;
+    margin-top: 80px;
+    padding: 0 50px;
+    border-radius: 5px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: $breakpoint-600) {
+        width: 100%;
+        margin-top: 40px;
+        padding: 0 10px;
+    }
+
+    h2 {
+        font-family: 'Outfit';
+        font-weight: $text-medium;
+        font-size: 48px;
+        margin-bottom: 0;
+    }
+
+    .container-task-info {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        
+        p {
+            font-family: 'Outfit';
+            font-weight: $text-light;
+            font-size: 24px;
+        }
+          
+        .checkbox-delete {
+            
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .checkmark {
+                /* Add if not using autoprefixer */
+                -webkit-appearance: none;
+                appearance: none;
+                /* For iOS < 15 to remove gradient background */
+                background-color: $white;
+                /* Not removed via appearance */
+                margin: 0;
+                color: $black;
+                width: 2.75em;
+                height: 2.75em;
+                border: 0.15em solid $black;
+                border-radius: 0.15em;
+                position: relative;
+            }
+    
+            .checkmark:before {
+                content: "";
+                width: 1.75em;
+                height: 1.72em;
+                display: none;
+                background-color: $green-validate;
+            }
+    
+            .checkmark:checked::before {
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            fa-icon {
+                color: white;
+                font-size: 32px;
+                padding-top: 4px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .container-add {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 20px 0 40px 0;
+
+        input {
+            width: 300px;
+            border-radius: 5px;
+            height: 40px;
+            border: 1px solid $black;
+            font-family: 'Outfit';
+            font-weight: $text-light;
+            font-size: 24px;
+            line-height: normal;
+            text-indent: 5px;
+
+            &:focus-visible {
+                outline: none;
+            }
+
+            &::placeholder {
+                font-style: italic;
+            }
+
+            @media screen and (max-width: $breakpoint-600) {
+                width: 65%;
+            }
+        }
+
+        button {
+            width: 120px;
+            border-radius: 5px;
+            border: 1px solid $black;
+            font-family: 'Outfit';
+            font-weight: $text-medium;
+            font-size: 24px;
+            background-color: $white;
+            transition: .2s ease;
+
+            &:hover {
+                cursor: pointer;
+                background-color: $background-grey;
+                color: white;   
+                border: 1px solid $white;
+            }
+        }
+    }
+}

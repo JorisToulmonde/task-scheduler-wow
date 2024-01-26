@@ -1,0 +1,35 @@
+@import '../variables';
+
+h1 {
+    font-family: $font-principal;
+    font-weight: 700;
+    color: $white;
+    text-align: center;
+    margin: 0;
+    padding: 80px 0 0;
+    letter-spacing: 5px;
+    font-size: 68px;
+
+    @media screen and (max-width: $breakpoint-600) {
+        font-size: 38px;
+        padding: 40px 0 0;
+    }
+}
+
+.container-task-list {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+
+    @media screen and (max-width: $breakpoint-desktop) {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    @media screen and (max-width: $breakpoint-600) {
+        app-task-list {
+            width: 80%;
+        }
+    }
+}

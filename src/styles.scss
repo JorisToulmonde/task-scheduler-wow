@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'variables';
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('./assets/fonts/outfit.ttf');
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient($black, $gradient-black, $black);
+    height: 100%;
+    margin: 0;
+}
+
+h1, h2, h3, p, span {
+    color: $white;
+}

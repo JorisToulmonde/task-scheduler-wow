@@ -1,0 +1,16 @@
+<div class="container-list">
+    <h2>{{title}}</h2>
+    <ng-container *ngFor="let task of tasksList; let i=index">
+        <div class="container-task-info">
+            <p>{{task.name}}</p>
+            <div class="checkbox-delete">
+                <input type="checkbox" class="checkmark" [(ngModel)]="task.checked" (change)="handleCheck()">
+                <fa-icon [icon]="trashIcon" (click)="deleteTask(i)"></fa-icon>
+            </div>
+        </div>
+    </ng-container>
+    <div class="container-add">
+        <input type="text" placeholder="New task" [(ngModel)]="newTask">
+        <button (click)="addNewTask()">Add</button>
+    </div>
+</div>
