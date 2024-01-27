@@ -50,6 +50,7 @@ export class TaskListComponent implements OnInit {
 
   deleteTask(index: number) {
     this.tasksList.splice(index, 1);
+    this.calculateProgressBar();
     localStorage.setItem(this.title.toLowerCase(), JSON.stringify(this.tasksList));
   }
 
