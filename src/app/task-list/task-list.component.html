@@ -1,5 +1,6 @@
 <div class="container-list">
-    <h2>{{title}}</h2>
+    <div class="progress-bar" [style.width.%]="progressBarWidth"></div>
+    <h2 class="{{progressBarWidth === 100 ? 'completed' : ''}}">{{title}} <ng-container *ngIf="progressBarWidth===100">completed !</ng-container></h2>
     <ng-container *ngFor="let task of tasksList; let i=index">
         <div class="container-task-info">
             <p>{{task.name}}</p>

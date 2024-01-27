@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Task } from './model/tache';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
 })
-export class TaskListComponent {
+export class TaskListComponent implements OnInit {
 
   @Input()
   title: string = '';
@@ -24,24 +24,40 @@ export class TaskListComponent {
 
   trashIcon = faTrash;
 
+  progressBarWidth: number = 0;
+
+  ngOnInit(): void {
+    this.calculateProgressBar();
+  }
+
   addNewTask() {
     if(this.newTask.length > 0) {
       this.tasksList.push({
         name: this.newTask,
         checked: false
       } as Task);
+      this.sortTaskList();
       localStorage.setItem(this.title.toLowerCase(), JSON.stringify(this.tasksList));
       this.newTask = '';
     }
   }
 
   handleCheck() {
+    this.calculateProgressBar();
     localStorage.setItem(this.title.toLowerCase(), JSON.stringify(this.tasksList));
   }
 
   deleteTask(index: number) {
     this.tasksList.splice(index, 1);
     localStorage.setItem(this.title.toLowerCase(), JSON.stringify(this.tasksList));
+  }
+
+  sortTaskList() {
+    this.tasksList.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  calculateProgressBar() {
+    this.progressBarWidth = Math.round(this.tasksList.filter(task => task.checked).length / this.tasksList.length * 100);
   }
 
 }
