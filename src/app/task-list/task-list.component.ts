@@ -37,6 +37,7 @@ export class TaskListComponent implements OnInit {
         checked: false
       } as Task);
       this.sortTaskList();
+      this.calculateProgressBar();
       localStorage.setItem(this.title.toLowerCase(), JSON.stringify(this.tasksList));
       this.newTask = '';
     }
